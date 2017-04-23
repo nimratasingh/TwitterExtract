@@ -7,7 +7,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 
 /** To extract tweets from a data file in JSON format
-
+**/
 
 public class TwitterExtractMapper extends Mapper<LongWritable, Text, Text,Text> {
 
