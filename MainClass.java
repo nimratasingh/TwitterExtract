@@ -45,21 +45,20 @@ public class MainClass {
 			System.out.println("JOB ONE COMPLETION!!");
 		}
 
-//		conf.set("CAMERA_RATING", "hdfs://lincoln:30381" + "/Testruns/camera_rating" ); 
-//
-//		Job cameraCat = Job.getInstance(conf);
-//		cameraCat.setJarByClass(MainClass.class);
-//		cameraCat.setMapperClass(CategoryExtractMapper.class);
-//		cameraCat.setReducerClass(CategoryExtractReducer.class);
-//		cameraCat.setOutputKeyClass(Text.class);
-//		cameraCat.setOutputValueClass(Text.class);
-//		cameraCat.setInputFormatClass(TextInputFormat.class);
-//		cameraCat.setOutputFormatClass(TextOutputFormat.class);
-//		FileInputFormat.setInputPaths(cameraCat, new Path(OUTPUT_PATH1));//camera rating file 
-//		FileOutputFormat.setOutputPath(cameraCat, new Path(args[1]));
-//		if (cameraCat.waitForCompletion(true)) {
-//			System.out.println("JOB TWO COMPLETION!!");
-//		}
+		conf.set("CAMERA_RATING", "hdfs://lincoln:30381" + "/Testruns/camera_rating" );
+		Job cameraCat = Job.getInstance(conf);
+		cameraCat.setJarByClass(MainClass.class);
+		cameraCat.setMapperClass(CategoryExtractMapper.class);
+		cameraCat.setReducerClass(CategoryExtractReducer.class);
+		cameraCat.setOutputKeyClass(Text.class);
+		cameraCat.setOutputValueClass(Text.class);
+		cameraCat.setInputFormatClass(TextInputFormat.class);
+		cameraCat.setOutputFormatClass(TextOutputFormat.class);
+		FileInputFormat.setInputPaths(cameraCat, new Path(OUTPUT_PATH1));//camera rating file 
+		FileOutputFormat.setOutputPath(cameraCat, new Path(args[1]));
+		if (cameraCat.waitForCompletion(true)) {
+			System.out.println("JOB TWO COMPLETION!!");
+		}
 		
 		conf.set("PHONE_RATING", "hdfs://lincoln:30381" + "/Testruns/mobile_rating.txt" ); 
 
