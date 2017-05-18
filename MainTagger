@@ -1,0 +1,55 @@
+package taggers;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import edu.stanford.nlp.tagger.maxent.MaxentTagger;
+
+public class MainTagger{
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+		// TODO Auto-generated method stub
+		
+		
+		// initialize tagger
+		MaxentTagger tagger = new MaxentTagger("tags/left3words-wsj-0-18.tagger");
+
+		// The sample string
+
+//		String sample = "This iphone works the best";
+		// tagged string
+		String sample = "";
+
+		String tagged = tagger.tagString(sample);
+//		System.out.println(tagged);
+
+		// getting the input from input.txt and writing tagged output to output.txt
+		FileInputStream fstream = new FileInputStream("05raw.txt");
+		DataInputStream in = new DataInputStream(fstream);
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+		//we will now pick up sentences line by line from the file input.txt and store it in the string sample
+		while((sample = br.readLine())!=null)
+		{
+			//tag the string
+			tagged = tagger.tagString(sample);
+			
+			FileWriter q = new FileWriter("output.txt",true);
+			BufferedWriter out =new BufferedWriter(q);
+			//write it to the file output.txt
+			out.write(tagged + "\t" + sample);
+			out.newLine();
+			out.close();
+		}
+
+	}
+
+}
+
+
+
